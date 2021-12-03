@@ -1,14 +1,10 @@
 const {Builder, By, Key, until} = require('selenium-webdriver');
 const assert = require('chai').assert;
 const {expect} = require('chai');
-
 describe('select vacuum cleaner in onliner shop scenario', function() {
-
   it('should open order form', function() {
-
-(async function example() {
-  const driver = await new Builder().forBrowser('chrome').build();
-  try {  
+   ( async function example() {
+    const driver = await new Builder().forBrowser('chrome').build();
     await driver.get('https://catalog.onliner.by/'); 
     const selectAppliances = await driver.findElement(By.css("[data-id='3']"));
     await selectAppliances.click();
@@ -23,7 +19,7 @@ describe('select vacuum cleaner in onliner shop scenario', function() {
     const selectRoborockProducer = driver.findElement(By.xpath("//ul[@class='schema-filter__list']//input[@value='roborock']/.."));
     await driver.executeScript('arguments[0].scrollIntoView();', selectRoborockProducer);
     await selectRoborockProducer.click();
-    const goodsCounter = await driver.findElement(By.css('.schema-filter-button__state.schema-filter-button__state_initial.schema-filter-button__state_disabled.schema-filter-button__state_control'));
+    const goodsCounter = await driver.findElement(By.css('.schema-filter-button__state_control'));
     await driver.wait(until.elementTextContains(goodsCounter, 'Найдено'), 5000);
     const productsBtn = await driver.findElement(By.css('#schema-products .schema-product__group:first-of-type .schema-product__button.button.button_orange'));
     await productsBtn.click();
@@ -34,18 +30,11 @@ describe('select vacuum cleaner in onliner shop scenario', function() {
     await confirmationButton.click();
     const buyNowButton = await driver.findElement(By.css('.offers-list__item:first-child .offers-list__control.offers-list__control_default.helpers_hide_tablet [href]'));
     await buyNowButton.click(); 
-    await driver.wait(until.elementLocated(By.css('.cart-form__title.cart-form__title_big-alter.cart-form__title_extended-alter')), 5000);
-    const orderFormTitle = await driver.findElement(By.css('.cart-form__title.cart-form__title_big-alter.cart-form__title_extended-alter'));
+    await driver.wait(until.elementLocated(By.css('.cart-form__title_extended-alter')), 5000);
+    const orderFormTitle = await driver.findElement(By.css('.cart-form__title_extended-alter'));
     assert.isTrue(await orderFormTitle.isDisplayed());
-    expect(await orderFormTitle.getText()).to.include('Оформление заказа');
-    await driver.sleep(10000);
-
-} catch (err) {
-  console.log(err);
-
-} finally {
+    expect(await orderFormTitle.getText()).to.include('Оформление заказа');  
     await driver.quit();
-  }
 })();
 });
-}); 
+});
