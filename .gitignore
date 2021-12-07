@@ -1,0 +1,6 @@
+node_modules
+mochawesome-report
+.nyc_output
+coverage
+jspm_packages/
+*.exe
