@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "description": "hometask selenium webdriverjs",
   "main": "index.js",
-
   "scripts": {
     "test": "mocha"
-    
-
   },
   "repository": {
     "type": "git",
@@ -25,7 +22,8 @@
   },
   "devDependencies": {
     "chai": "^4.3.4",
-    "eslint": "^8.3.0",
+    "eslint": "^8.4.0",
+    "eslint-config-google": "^0.14.0",
     "mocha": "^9.1.3"
   }
 }
